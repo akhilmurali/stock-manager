@@ -6,6 +6,10 @@ app.get('/', (req, res)=>{
     res.json({msg: 'Hi from remote server'});
 });
 
+app.post('/image', (req, res)=>{
+    
+});
+
 app.listen(port, ()=>{
     console.log('App listening on port: ' + port);
 });
