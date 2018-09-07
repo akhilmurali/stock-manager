@@ -1,5 +1,5 @@
-let express = require('express');
 let app = express();
+let express = require('express');
 let port = process.env.PORT || 4000;
 
 app.get('/', (req, res)=>{
@@ -7,7 +7,12 @@ app.get('/', (req, res)=>{
 });
 
 app.post('/image', (req, res)=>{
-    
+    res.status({status: 'ok'});
+});
+
+app.get('/image/latest', (req, res)=>{
+    console.log(req.body);
+    res.status({status: 'ok'});
 });
 
 app.listen(port, ()=>{
