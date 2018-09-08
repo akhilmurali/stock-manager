@@ -1,30 +1,25 @@
-var express = require('express');
-var cors = require('cors');
-var port = process.env.PORT || 4000;
-var bodyParser = require('body-parser');
-var multipart = require('connect-multiparty');
-var multipartMiddleware = multipart();
+let express = require('express');
+let cors = require('cors');
+let port = process.env.PORT || 4000;
+let bodyParser = require('body-parser');
+let router = require('./router');
+let dotenv = require('dotenv');
+let mongoose = require('mongoose');
 
+dotenv.config();
 const app = express();
 
+//User bodyparser middleware:
 app.use(bodyParser.json());
+//Add cors middleware to allow requests from all sources:
 app.use(cors());
+//Add router middleware:
+app.use('/', router);
 
-app.get('/', (req, res)=>{
-    console.log(req.url);
-    res.json({msg: 'Hi from remote server'});
-});
+mongoose.Promise = global.Promise;
 
-app.post('/image', multipartMiddleware, (req, res)=>{
-    console.log(req.body);
-    console.log(req);
-    console.log(req.files, '################################');
-    res.json({status: 'ok'});
-});
-
-app.get('/image/latest', (req, res)=>{
-    console.log(req.url);
-    res.json({status: 'ok'});
+mongoose.connect(process.env.DB_URL,(err, conn)=>{
+    console.log('Connection established to mongodb');
 });
 
 app.listen(port, ()=>{
