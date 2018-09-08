@@ -64,4 +64,4 @@ const submit = (req, res) => {
     });
 }
 
-module.exports = { home, imageLatest, submit };
+module.exports = { home, submit };

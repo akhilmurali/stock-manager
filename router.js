@@ -8,6 +8,4 @@ router.get('/', controller.home);
 
 router.post('/image', multipartMiddleware, controller.submit);
 
-router.get('/image/latest', controller.imageLatest);
-
 module.exports = router;
