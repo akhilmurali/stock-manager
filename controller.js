@@ -51,7 +51,7 @@ const submit = (req, res) => {
     uploader.on('end', function () {
         console.log("done uploading");
         let image = new Image({
-            url: 'https://s3.amazonaws.com/bucket.invenlook.storage/' + key,
+            url: process.env.aws_s3_url + key,
             attributes: []
         });
         image.save()
