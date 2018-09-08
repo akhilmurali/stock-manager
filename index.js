@@ -1,8 +1,11 @@
-let express = require('express');
-let cors = require('cors');
-let app = express();
-let port = process.env.PORT || 4000;
-let bodyParser = require('body-parser');
+var express = require('express');
+var cors = require('cors');
+var port = process.env.PORT || 4000;
+var bodyParser = require('body-parser');
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
+
+const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -12,8 +15,10 @@ app.get('/', (req, res)=>{
     res.json({msg: 'Hi from remote server'});
 });
 
-app.post('/image', (req, res)=>{
+app.post('/image', multipartMiddleware, (req, res)=>{
     console.log(req.body);
+    console.log(req);
+    console.log(req.files, '################################');
     res.json({status: 'ok'});
 });
 
