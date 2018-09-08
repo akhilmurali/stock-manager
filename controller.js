@@ -15,21 +15,12 @@ let client = s3.createClient({
         secretAccessKey: process.env.s3_secret,
     }
 });
-console.log(process.env.s3_access_key);
-console.log(process.env.s3_secret);
 
-//GET home route:
+//GET latest snap of inventory:
 const home = (req, res) => {
-    //Server Test route:
-    res.json({ status: 'OK' });
-}
-
-//GET latest snap of the inventory from the database:
-const imageLatest = (req, res) => {
-    console.log(req.url);
-    Image.findOne({})
+    Image.findOne().sort({uploaded_At: -1})
         .then((image) => {
-            res.json(image);
+            res.redirect(image.url);
         })
         .catch((err) => {
             res.json(err);
