@@ -26,7 +26,7 @@ $ npm start
 
 Find deployment link here: https://safe-cliffs-18013.herokuapp.com/
 
-
+P.S: The link redirects to the most recent snap in the database.
 
 
 
