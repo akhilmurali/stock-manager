@@ -8,7 +8,7 @@ The subsequent versions of the application can also detect the contents of your 
 
 The application uses Mongo, Node and Express for server functionality. It uses amazon S3 service for image storage and Python for scripting Pi's function.
 
-The subsequent version will make use of google's cloud vision service and Google's AutoML for detecting raw foods and automating restocking of foods.
+The subsequent version will make use of google's cloud vision service and Google's AutoML for detecting raw foods and automating restocking.
 
 ### Version
 0.1.0
